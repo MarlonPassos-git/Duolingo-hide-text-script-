@@ -1,40 +1,49 @@
 // ==UserScript==
 // @name         Duolingo Hide Text
 // @namespace    http://tampermonkey.net/
-// @version      0.1.3
+// @version      0.2.0
 // @author       You
 // @match        *://*.duolingo.com/*
 // @icon         https://www.google.com/s2/favicons?domain=duolingo.com
 // @grant        none
 // ==/UserScript==
 
+function createStyleClass () {
+    document.body.insertAdjacentHTML('beforeend', '<style class="stylePlugin"> .hideText {color: #FFF;}.hideText:hover {color: #3c3c3c}</style>')
+}
+
+function getSyleClass() {
+   return document.querySelector('.stylePlugin')
+}
+
+function handleStyle() {
+   if (getSyleClass() === null ) createStyleClass()
+}
+
+function getPhase() {
+    /** https://prnt.sc/UQSi6DQ_nAXq */
+    const CSS_SELECTOR = '[data-test="challenge challenge-translate"] ._1KUxv._11rtD [dir="ltr"] > span:nth-child(2), [data-test="challenge challenge-listenIsolation"] ._1KUxv._11rtD > [dir="ltr"] > span:nth-child(2)';
+    return document.querySelector(CSS_SELECTOR) ?? document.querySelector('span.hideText')
+}
+
+function getErrorContainer() {
+    /** https://prnt.sc/jYiswWE1I8Qm */
+    const CSS_SELECTOR = `[data-test="blame blame-incorrect"]`;
+    return document.querySelector(CSS_SELECTOR)
+}
+
+
 (function() {
-    'use strict';
-
-    let loop = setInterval(()=> {
-    let phase = document.querySelector('._1KUxv [data-test="hint-sentence"]')
-    let sond = document.querySelector('._21LCG')
-    let answer = document.querySelector('.YQ0lZ ')
-
-    if (sond) {
-        phase.classList.add('hideText')
-    }
-
-    if (answer) {
-        phase.classList.remove('hideText')
-    }
-
-    hasStyle()
-
-}, 500)
-    loop()
-
-    function hasStyle() {
-
-        let b = document.querySelector('.stylePlugin')
-        if (b == null) {
-            document.body.insertAdjacentHTML('beforeend', '<style class="stylePlugin"> .hideText {color: #FFF;}.hideText:hover {color: #3c3c3c}</style>')
+    setInterval(()=> {
+        if (getPhase()) {
+            getPhase().classList.add('hideText')
         }
-    }
 
+        if (getErrorContainer()) {
+            getPhase() && getPhase().classList.remove('hideText')
+        }
+
+        handleStyle()
+
+    }, 200)
 })();
