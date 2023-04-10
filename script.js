@@ -18,12 +18,12 @@ function main () {
 };
 
 function handlePhases() {
-        if (getPhase()) {
-            getPhase().classList.add(CLASS_CSS_HIDE_TEXT)
+        if (getPhaseElement()) {
+            getPhaseElement().classList.add(CLASS_CSS_HIDE_TEXT)
         }
 
-        if (getErrorContainer()) {
-            getPhase() && getPhase().classList.remove(CLASS_CSS_HIDE_TEXT)
+        if (getErrorContainerElement()) {
+            getPhaseElement() && getPhaseElement().classList.remove(CLASS_CSS_HIDE_TEXT)
         }
 }
 
@@ -39,13 +39,13 @@ function handleStyle() {
    if (getSyleClass() === null ) createStyleClass()
 }
 
-function getPhase() {
+function getPhaseElement() {
     /** https://prnt.sc/UQSi6DQ_nAXq */
     const CSS_SELECTOR = '[data-test="challenge challenge-translate"] ._1KUxv._11rtD [dir="ltr"] > span:nth-child(2), [data-test="challenge challenge-listenIsolation"] ._1KUxv._11rtD > [dir="ltr"] > span:nth-child(2)';
     return document.querySelector(CSS_SELECTOR) ?? document.querySelector(`span.${CLASS_CSS_HIDE_TEXT}`)
 }
 
-function getErrorContainer() {
+function getErrorContainerElement() {
     /** https://prnt.sc/jYiswWE1I8Qm */
     const CSS_SELECTOR = `[data-test="blame blame-incorrect"]`;
     return document.querySelector(CSS_SELECTOR)
