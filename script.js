@@ -8,6 +8,23 @@
 // @grant        none
 // ==/UserScript==
 
+main()
+
+function main () {
+    setInterval(()=> {
+        if (getPhase()) {
+            getPhase().classList.add('hideText')
+        }
+
+        if (getErrorContainer()) {
+            getPhase() && getPhase().classList.remove('hideText')
+        }
+
+        handleStyle()
+
+    }, 200)
+};
+
 function createStyleClass () {
     document.body.insertAdjacentHTML('beforeend', '<style class="stylePlugin"> .hideText {color: #FFF;}.hideText:hover {color: #3c3c3c}</style>')
 }
@@ -33,17 +50,5 @@ function getErrorContainer() {
 }
 
 
-(function() {
-    setInterval(()=> {
-        if (getPhase()) {
-            getPhase().classList.add('hideText')
-        }
 
-        if (getErrorContainer()) {
-            getPhase() && getPhase().classList.remove('hideText')
-        }
 
-        handleStyle()
-
-    }, 200)
-})();
