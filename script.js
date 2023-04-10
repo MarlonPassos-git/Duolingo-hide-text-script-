@@ -7,7 +7,10 @@
 // @icon         https://www.google.com/s2/favicons?domain=duolingo.com
 // @grant        none
 // ==/UserScript==
+
 const CLASS_CSS_HIDE_TEXT = 'hideText'
+const CLASS_CSS_MY_STYLE = 'stylePlugin'
+
 main()
 
 function main () {
@@ -28,7 +31,7 @@ function handlePhases() {
 }
 
 function createStyleClass () {
-    document.body.insertAdjacentHTML('beforeend', `<style class="stylePlugin"> .${CLASS_CSS_HIDE_TEXT} {color: #FFF;}.${CLASS_CSS_HIDE_TEXT}:hover {color: #3c3c3c}</style>`)
+    document.body.insertAdjacentHTML('beforeend', `<style class="${CLASS_CSS_MY_STYLE}"> .${CLASS_CSS_HIDE_TEXT} {color: #FFF;}.${CLASS_CSS_HIDE_TEXT}:hover {color: #3c3c3c}</style>`)
 }
 
 
@@ -50,7 +53,7 @@ function getErrorContainerElement() {
 }
 
 function getMyStyleElement() {
-   return document.querySelector('.stylePlugin')
+   return document.querySelector(`.${CLASS_CSS_MY_STYLE}`)
 }
 
 
