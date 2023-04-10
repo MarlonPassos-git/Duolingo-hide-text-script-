@@ -31,12 +31,10 @@ function createStyleClass () {
     document.body.insertAdjacentHTML('beforeend', `<style class="stylePlugin"> .${CLASS_CSS_HIDE_TEXT} {color: #FFF;}.${CLASS_CSS_HIDE_TEXT}:hover {color: #3c3c3c}</style>`)
 }
 
-function getSyleClass() {
-   return document.querySelector('.stylePlugin')
-}
+
 
 function handleStyle() {
-   if (getSyleClass() === null ) createStyleClass()
+   if (getMyStyleElement() === null ) createStyleClass()
 }
 
 function getPhaseElement() {
@@ -51,6 +49,8 @@ function getErrorContainerElement() {
     return document.querySelector(CSS_SELECTOR)
 }
 
-
+function getMyStyleElement() {
+   return document.querySelector('.stylePlugin')
+}
 
 
