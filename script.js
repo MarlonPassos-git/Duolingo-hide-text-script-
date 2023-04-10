@@ -7,7 +7,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=duolingo.com
 // @grant        none
 // ==/UserScript==
-
+const CLASS_CSS_HIDE_TEXT = 'hideText'
 main()
 
 function main () {
@@ -19,16 +19,16 @@ function main () {
 
 function handlePhases() {
         if (getPhase()) {
-            getPhase().classList.add('hideText')
+            getPhase().classList.add(CLASS_CSS_HIDE_TEXT)
         }
 
         if (getErrorContainer()) {
-            getPhase() && getPhase().classList.remove('hideText')
+            getPhase() && getPhase().classList.remove(CLASS_CSS_HIDE_TEXT)
         }
 }
 
 function createStyleClass () {
-    document.body.insertAdjacentHTML('beforeend', '<style class="stylePlugin"> .hideText {color: #FFF;}.hideText:hover {color: #3c3c3c}</style>')
+    document.body.insertAdjacentHTML('beforeend', `<style class="stylePlugin"> .${CLASS_CSS_HIDE_TEXT} {color: #FFF;}.${CLASS_CSS_HIDE_TEXT}:hover {color: #3c3c3c}</style>`)
 }
 
 function getSyleClass() {
@@ -42,7 +42,7 @@ function handleStyle() {
 function getPhase() {
     /** https://prnt.sc/UQSi6DQ_nAXq */
     const CSS_SELECTOR = '[data-test="challenge challenge-translate"] ._1KUxv._11rtD [dir="ltr"] > span:nth-child(2), [data-test="challenge challenge-listenIsolation"] ._1KUxv._11rtD > [dir="ltr"] > span:nth-child(2)';
-    return document.querySelector(CSS_SELECTOR) ?? document.querySelector('span.hideText')
+    return document.querySelector(CSS_SELECTOR) ?? document.querySelector(`span.${CLASS_CSS_HIDE_TEXT}`)
 }
 
 function getErrorContainer() {
