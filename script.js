@@ -2,7 +2,7 @@
 // @name         Duolingo Hide Text
 // @namespace    http://tampermonkey.net/
 // @version      0.2.0
-// @author       You
+// @author       Marlon Passos
 // @match        *://*.duolingo.com/*
 // @icon         https://www.google.com/s2/favicons?domain=duolingo.com
 // @grant        none
