@@ -31,7 +31,20 @@ function handlePhases() {
 }
 
 function createStyleClass () {
-    document.body.insertAdjacentHTML('beforeend', `<style class="${CLASS_CSS_MY_STYLE}"> .${CLASS_CSS_HIDE_TEXT} {color: #FFF;}.${CLASS_CSS_HIDE_TEXT}:hover {color: #3c3c3c}</style>`)
+    const styleElementInString = `
+        <style
+            class="${CLASS_CSS_MY_STYLE}"
+        >
+            .${CLASS_CSS_HIDE_TEXT} {
+                color: #FFF;
+            }
+
+            .${CLASS_CSS_HIDE_TEXT}:hover {
+                color: #3c3c3c
+            }
+        </style>`
+
+    document.body.insertAdjacentHTML('beforeend', styleElementInString )
 }
 
 
