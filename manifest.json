@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "Nome da sua extensão",
+  "version": "1.0",
+  "description": "Descrição da sua extensão",
+  "browser_action": {
+    "default_icon": "icone.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab"
+  ]
+}

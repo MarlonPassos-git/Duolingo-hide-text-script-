@@ -47,8 +47,6 @@ function createStyleClass () {
     document.body.insertAdjacentHTML('beforeend', styleElementInString )
 }
 
-
-
 function handleStyle() {
    if (getMyStyleElement() === null ) createStyleClass()
 }
@@ -68,5 +66,3 @@ function getErrorContainerElement() {
 function getMyStyleElement() {
    return document.querySelector(`.${CLASS_CSS_MY_STYLE}`)
 }
-
-
