@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Duolingo Hide Text
 // @namespace    http://tampermonkey.net/
-// @version      0.2.0
+// @version      0.3.0
 // @author       Marlon Passos
 // @match        *://*.duolingo.com/*
 // @icon         https://www.google.com/s2/favicons?domain=duolingo.com
@@ -25,7 +25,7 @@ function handlePhases() {
             getPhaseElement().classList.add(CLASS_CSS_HIDE_TEXT)
         }
 
-        if (getErrorContainerElement()) {
+        if (getErrorContainerElement() || getCorrectContainerElement()) {
             getPhaseElement() && getPhaseElement().classList.remove(CLASS_CSS_HIDE_TEXT)
         }
 }
@@ -62,6 +62,14 @@ function getErrorContainerElement() {
     const CSS_SELECTOR = `[data-test="blame blame-incorrect"]`;
     return document.querySelector(CSS_SELECTOR)
 }
+
+function getCorrectContainerElement() {
+    /** https://prnt.sc/EdChsyEy8xmo */
+    const CSS_SELECTOR = `[data-test="blame blame-correct"]`;
+    return document.querySelector(CSS_SELECTOR)
+}
+
+// blame-correct"
 
 function getMyStyleElement() {
    return document.querySelector(`.${CLASS_CSS_MY_STYLE}`)
