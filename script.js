@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Duolingo Hide Text
 // @namespace    http://tampermonkey.net/
-// @version      0.3.0
+// @version      0.4.0
 // @author       Marlon Passos
 // @match        *://*.duolingo.com/*
 // @icon         https://www.google.com/s2/favicons?domain=duolingo.com
@@ -10,6 +10,7 @@
 
 const CLASS_CSS_HIDE_TEXT = 'hideText'
 const CLASS_CSS_MY_STYLE = 'stylePlugin'
+const CLASS_CSS_TAP_TOKEN_TEXT = '[data-test="challenge-tap-token-text"]'
 
 main()
 
@@ -41,6 +42,10 @@ function createStyleClass () {
 
             .${CLASS_CSS_HIDE_TEXT}:hover {
                 color: #3c3c3c
+            }
+
+            ${CLASS_CSS_TAP_TOKEN_TEXT} {
+                color: transparent;
             }
         </style>`
 
